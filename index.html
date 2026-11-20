@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <title>Nikkei Daily | 日経TEST対策</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <button class="brand" type="button" aria-label="トップへ">
+          <span class="brand-mark">N</span>
+          <span>Nikkei Daily</span>
+        </button>
+
+        <nav class="nav" aria-label="メインメニュー">
+          <button class="nav-item active" type="button" data-view="today">
+            <span class="nav-icon">◫</span>
+            今日のニュース
+          </button>
+          <button class="nav-item" type="button" data-view="quiz">
+            <span class="nav-icon">✓</span>
+            クイズ
+          </button>
+          <button class="nav-item" type="button" data-view="progress">
+            <span class="nav-icon">▥</span>
+            学習状況
+          </button>
+          <button class="nav-item" type="button" data-view="saved">
+            <span class="nav-icon">♡</span>
+            保存した記事
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="goal-ring" id="goalRing" aria-label="今日の学習進捗">
+            <span id="goalPercent">0%</span>
+          </div>
+          <div>
+            <strong>今日の目標</strong>
+            <small id="goalText">あと5記事読みましょう</small>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="todayLabel"></p>
+            <h1 id="pageTitle">今日のニュース</h1>
+          </div>
+          <div class="top-actions">
+            <button class="icon-button" id="themeButton" type="button" aria-label="表示モード切替">☼</button>
+            <button class="refresh-button" id="refreshButton" type="button" aria-label="ニュースを更新">更新</button>
+            <div class="avatar" aria-label="学習ユーザー">研</div>
+          </div>
+        </header>
+
+        <section id="todayView" class="view active">
+          <div class="overview">
+            <div>
+              <p class="section-label">本日の学習セット</p>
+              <h2>10～20分で押さえる試験関連ニュース</h2>
+              <p class="overview-copy">金融・経済・政治・国際・社会を中心に、短時間で要点と用語を確認します。</p>
+            </div>
+            <div class="overview-stats">
+              <div><strong id="remainingCount">5</strong><span>記事</span></div>
+              <div><strong>15</strong><span>分</span></div>
+              <div><strong id="categoryCount">5</strong><span>分野</span></div>
+            </div>
+          </div>
+
+          <div class="filters" id="categoryFilters" aria-label="分野フィルター"></div>
+          <div class="news-status" id="newsStatus"></div>
+          <div class="article-grid" id="articleGrid"></div>
+        </section>
+
+        <section id="quizView" class="view">
+          <div class="quiz-layout">
+            <div class="quiz-card" id="quizCard"></div>
+          </div>
+        </section>
+
+        <section id="progressView" class="view">
+          <div class="section-heading">
+            <p class="section-label">学習状況</p>
+            <h2>分野別の習熟度</h2>
+          </div>
+          <div class="progress-grid" id="progressGrid"></div>
+        </section>
+
+        <section id="savedView" class="view">
+          <div class="section-heading">
+            <p class="section-label">ブックマーク</p>
+            <h2>保存した記事</h2>
+          </div>
+          <div class="article-grid" id="savedGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="articleModal" hidden>
+      <article class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="閉じる">×</button>
+        <div id="modalContent"></div>
+      </article>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
